@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 
-const Container = styled.button`
+interface IContainerProps extends React.ButtonHTMLAttributes<HTMLButtonElement>  {
+  action: "increment" | "remove";
+} 
+
+const Container = styled.button<IContainerProps>`
   min-width: 200px;
   min-height: 50px;
 
-  background-color: var(--secondary);
+  background-color: var(${({action}) => action === 'remove' ? "--attention" : "--secondary"});
 
   border: none;
   border-radius: 5px;
+
+  
 `;
 
 const Description = styled.p`

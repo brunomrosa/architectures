@@ -1,15 +1,30 @@
 import React from "react";
-
+import { toast } from "react-toastify";
 import { Container, Description } from "./styles";
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  action: "increment" | "remove";
+}
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+const Button = ({ onClick, children, id, action, ...rest }: ButtonProps) => {
+  const showToast = () => {
+    action === "increment"
+      ? toast.success("Adicionado!")
+      : toast.error("Removido!");
+  };
 
-const Button = ({ onClick, children, id, ...rest }: ButtonProps) => {
+  const handleOnClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    onClick && onClick(e);
+    showToast();
+  };
+
   return (
     <Container
       id={`button@${id}`}
       data-testid={`button@${id}`}
-      onClick={onClick}
+      onClick={handleOnClick}
+      action={action}
       {...rest}
     >
       <Description>{children}</Description>

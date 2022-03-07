@@ -15,8 +15,21 @@ const Counter = ({
 }: ICounterProps) => {
   const CustomHeadingElement = `${headingLevel}` as keyof JSX.IntrinsicElements;
 
+  const containerBackground =
+    children === 0
+      ? "--toastify-color-info"
+      : children! > 0
+      ? "--toastify-color-success"
+      : "    --toastify-color-error";
+
   return (
-    <Container onClick={onClick} id={id} data-testid={id} {...rest}>
+    <Container
+      containerBackgroundColor={containerBackground}
+      onClick={onClick}
+      id={id}
+      data-testid={id}
+      {...rest}
+    >
       <CustomHeadingElement>{children}</CustomHeadingElement>
     </Container>
   );

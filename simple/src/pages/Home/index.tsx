@@ -25,10 +25,12 @@ export const Home = ({ ...rest }: React.HTMLAttributes<HTMLDivElement>) => {
         {count}
       </Counter>
       <ButtonContainer>
-        <Button id={`home@remove`} onClick={handleRemove}>
+        <Button action="remove" id={`home@remove`} onClick={handleRemove}>
           Remover!
         </Button>
-        <Button onClick={handleIncrement}>Adicionar!</Button>
+        <Button action="increment" onClick={handleIncrement}>
+          Adicionar!
+        </Button>
       </ButtonContainer>
     </Container>
   );
