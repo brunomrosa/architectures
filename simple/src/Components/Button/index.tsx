@@ -1,13 +1,20 @@
 import React from "react";
 
-import { Container } from "./styles";
+import { Container, Description } from "./styles";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  onClick: () => void;
-}
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const Button = ({ onClick, children, ...rest }: ButtonProps) => {
-  return <Container onClick={onClick}>{children}</Container>;
+const Button = ({ onClick, children, id, ...rest }: ButtonProps) => {
+  return (
+    <Container
+      id={`button@${id}`}
+      data-testid={`button@${id}`}
+      onClick={onClick}
+      {...rest}
+    >
+      <Description>{children}</Description>
+    </Container>
+  );
 };
 
 export default Button;

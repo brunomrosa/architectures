@@ -4,7 +4,7 @@ import Counter from "../../Components/Counter";
 
 import { ButtonContainer, Container } from "./styles";
 
-export const Home = ({ ...rest }: React.HTMLAttributes<HTMLDivElement>) => {
+export const Home: React.FC = () => {
   const [count, setCount] = useState(0);
 
   const handleIncrement = () => {
@@ -15,20 +15,12 @@ export const Home = ({ ...rest }: React.HTMLAttributes<HTMLDivElement>) => {
     setCount((prev) => prev - 1);
   };
 
-  const handleClearCounter = () => {
-    setCount(0);
-  };
-
   return (
-    <Container id="home" data-testid="home" {...rest}>
-      <Counter id="counter" onClick={handleClearCounter} headingLevel={`h4`}>
-        {count}
-      </Counter>
+    <Container>
+      <Counter>{count}</Counter>
       <ButtonContainer>
-        <Button id={`home@remove`} onClick={handleRemove}>
-          Remover!
-        </Button>
         <Button onClick={handleIncrement}>Adicionar!</Button>
+        <Button onClick={handleRemove}>Remover!</Button>
       </ButtonContainer>
     </Container>
   );

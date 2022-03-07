@@ -6,12 +6,9 @@ const Container = styled.button`
 
   background-color: var(--secondary);
 
+  color: var(--text);
   border: none;
   border-radius: 5px;
 `;
 
-const Description = styled.p`
-  color: var(--text);
-`
-
-export { Container, Description };
+export {Container}
